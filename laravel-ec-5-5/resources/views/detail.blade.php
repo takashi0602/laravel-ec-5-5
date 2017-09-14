@@ -6,7 +6,7 @@
     -->
 <html>
 <head>
-    <title>Curry Curry Curry</title>
+    <title>Generic - Phantom by HTML5 UP</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--[if lte IE 8]>
@@ -27,7 +27,7 @@
 
             <!-- Logo -->
             <a href="/" class="logo">
-                <span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">OIC Market</span>
+                <span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">OIC MARKET</span>
             </a>
 
             <!-- Nav -->
@@ -38,7 +38,6 @@
             </nav>
 
         </div>
-
     </header>
 
     <!-- Menu -->
@@ -51,38 +50,57 @@
             <li><a href="/detail?id=3">ONIONS</a></li>
             <li><a href="/detail?id=4">CURRY POWDER</a></li>
             <li><a href="/detail?id=5">MEET</a></li>
-            <li><a href="/cart">SHOPPING CART</a></li>
         </ul>
     </nav>
 
     <!-- Main -->
     <div id="main">
         <div class="inner">
-            <header>
-                <h1>Curry Curry Curry</h1>
-                <p>カレー愛好家のためのスーパーマーケット</p>
-                <a href="/cart" class="button" style="margin-bottom: 20px;">カートを見る</a>
+            <h1>{{ $vegetable->name }}</h1>
+            <a href="/cart" class="button" style="margin-bottom: 20px;">カートを見る</a>
 
-            </header>
-            <section class="tiles">
+            <span class="image main"><img src="{{ $vegetable->img }}" alt="" style="height: 40%;width: 40%; display: block; margin-left: auto; margin-right: auto"/></span>
+            <p>{{ $vegetable->description }}</p>
 
-                @foreach($vegetables as $vegetable)
-                    <article class="style{{ $vegetable->id }}">
-                    <span class="image">
-                        <img src="{{ $vegetable->img }}" alt=""/>
-                    </span>
-                        <a href="/detail?id={{ $vegetable->id }}">
-                            <h2>{{ $vegetable->name }}</h2>
-                            <div class="content">
-                                <p>{{ $vegetable->kana }}</p>
-                            </div>
-                        </a>
-                    </article>
-                @endforeach
+            <div class="table-wrapper">
+                <table class="alt">
+                    <thead>
+                    <tr>
+                        <th>規格・サイズ</th>
+                        <th>商品内容</th>
+                        <th>価格（税込）</th>
+                        <th>個数</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>{{ $vegetable->size }}</td>
+                        <td>{{ $vegetable->contents }}</td>
+                        <td>¥ {{ $vegetable->price }}</td>
+                        <td>
+                            <select name="amount" id="">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
 
-            </section>
+            <form action="/cart?id={{ $vegetable->id }}" method="post">
+                {{ csrf_field() }}
+                <ul class="actions fit">
+                    <li><a href="/" class="button fit">一覧に戻る</a></li>
+                    <li><input type="submit" class="button special fit" value="カートに入れる"></li>
+                </ul>
+            </form>
         </div>
     </div>
+
 
     <!-- Footer -->
     <footer id="footer">

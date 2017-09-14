@@ -6,7 +6,7 @@
     -->
 <html>
 <head>
-    <title>Curry Curry Curry</title>
+    <title>Generic - Phantom by HTML5 UP</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--[if lte IE 8]>
@@ -27,7 +27,7 @@
 
             <!-- Logo -->
             <a href="/" class="logo">
-                <span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">OIC Market</span>
+                <span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">OIC MARKET</span>
             </a>
 
             <!-- Nav -->
@@ -38,7 +38,6 @@
             </nav>
 
         </div>
-
     </header>
 
     <!-- Menu -->
@@ -51,36 +50,52 @@
             <li><a href="/detail?id=3">ONIONS</a></li>
             <li><a href="/detail?id=4">CURRY POWDER</a></li>
             <li><a href="/detail?id=5">MEET</a></li>
-            <li><a href="/cart">SHOPPING CART</a></li>
         </ul>
     </nav>
 
     <!-- Main -->
     <div id="main">
         <div class="inner">
-            <header>
-                <h1>Curry Curry Curry</h1>
-                <p>カレー愛好家のためのスーパーマーケット</p>
-                <a href="/cart" class="button" style="margin-bottom: 20px;">カートを見る</a>
+            <h2>お買い物かご</h2>
+            <a href="/delete/all" class="button" style="margin-bottom: 20px;">カートを空にする</a>
 
-            </header>
-            <section class="tiles">
+            <div class="table-wrapper">
+                <!--商品が入っているとき-->
+                @if($items)
+                    <table class="alt">
+                        <thead>
+                        <tr>
+                            <th>商品名</th>
+                            <th>規格・サイズ</th>
+                            <th>数量</th>
+                            <th>価格（税込）</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!--sessionに入ってるデータをループで回す-->
+                        @foreach($items as $index=>$item)
+                            <tr>
+                                <td>{{ $item->kana }}</td>
+                                <td>{{ $item->size }}</td>
+                                <td>{{ $item->amount }}</td>
+                                <td>¥ {{ $item->price }}</td>
+                                <td style="text-align: center;"><a href="/delete?index={{ $index }}">削除</a></td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                    <!--商品が入っていないとき-->
+                @else
+                    <p>商品は入っていません。</p>
+                @endif
+            </div>
 
-                @foreach($vegetables as $vegetable)
-                    <article class="style{{ $vegetable->id }}">
-                    <span class="image">
-                        <img src="{{ $vegetable->img }}" alt=""/>
-                    </span>
-                        <a href="/detail?id={{ $vegetable->id }}">
-                            <h2>{{ $vegetable->name }}</h2>
-                            <div class="content">
-                                <p>{{ $vegetable->kana }}</p>
-                            </div>
-                        </a>
-                    </article>
-                @endforeach
+            <ul class="actions fit">
+                <li><a href="/" class="button fit">買い物を続ける</a></li>
+                <li><a href="#" class="button special fit">購入手続きへ</a></li>
+            </ul>
 
-            </section>
+
         </div>
     </div>
 
