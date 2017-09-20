@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
 /*
- * カート周りのメソド
+ * カート周りのメソッド
  *
  * */
 class Cart extends Model
@@ -29,12 +29,13 @@ class Cart extends Model
     }
     //カート内商品すべてを取得
     public function getList(){
-        $cartItems = session()->get("items",[]); //セッションデータをそのまま取得、nullの場合は空の配列
+//        $cartItems = session()->get("items",[]); //セッションデータをそのまま取得、nullの場合は空の配列
+        $items = session()->get("items", []);
 
-        $items = []; //表に渡す最終的な商品の配列（数量は足し算済みになってるようにする）
+//        $items = []; //表に渡す最終的な商品の配列（数量は足し算済みになってるようにする）
 
-        foreach($cartItems as $cartItem){
-            $id = $cartItem->id;
+//        foreach($cartItems as $cartItem){
+//            $id = $cartItem->id;
 //            $items[$id] =
 
 //            if($id === 2) {
@@ -49,22 +50,21 @@ class Cart extends Model
 //            if($id === 5) {
 //
 //            }
-        };
+//        };
 
 //        foreach($items as $item){
 //            $id = $item["id"]->get();
 //            $tests[] = $id;
 //        };
 //        dd($tests);
-//
-//
+
+
 //        $listItems = [
 //            "kana" => "じゃがいも",
 //            "size" => "じゃがいも",
 //            "amount" => "じゃがいも",
 //            "price" => "じゃがいも"
 //        ];
-//        dd($items);
         return $items;
     }
 

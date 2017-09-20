@@ -56,10 +56,10 @@
     <!-- Main -->
     <div id="main">
         <div class="inner">
-            <h1>{{ $vegetable->name }}</h1>
+            <h1>{{  $vegetable->name }}</h1>
             <a href="/cart" class="button" style="margin-bottom: 20px;">カートを見る</a>
 
-            <span class="image main"><img src="{{ $vegetable->img }}" alt="" style="height: 40%;width: 40%; display: block; margin-left: auto; margin-right: auto"/></span>
+            <span class="image main"><img src="{{  $vegetable->img }}" alt="" style="height: 40%;width: 40%; display: block; margin-left: auto; margin-right: auto"/></span>
             <p>{{ $vegetable->description }}</p>
 
             <div class="table-wrapper">
@@ -74,9 +74,9 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td>{{ $vegetable->size }}</td>
-                        <td>{{ $vegetable->contents }}</td>
-                        <td>¥ {{ $vegetable->price }}</td>
+                        <td>{{$vegetable->size}}</td>
+                        <td>{{$vegetable->contents}}</td>
+                        <td>¥ {{$vegetable->price}}</td>
                         <td>
                             <select name="amount" id="">
                                 <option value="1">1</option>
@@ -91,7 +91,7 @@
                 </table>
             </div>
 
-            <form action="/cart?id={{ $vegetable->id }}" method="post">
+            <form action="/cart?id={{$vegetable->id}}" method="post">
                 {{ csrf_field() }}
                 <ul class="actions fit">
                     <li><a href="/" class="button fit">一覧に戻る</a></li>
@@ -100,7 +100,6 @@
             </form>
         </div>
     </div>
-
 
     <!-- Footer -->
     <footer id="footer">

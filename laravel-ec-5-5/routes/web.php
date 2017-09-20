@@ -35,8 +35,8 @@ Route::get('/detail', function(Request $request){
 // カートに入れる
 Route::post('/cart', function(Request $request){
     $id = $request->get("id"); //idを取得
-//    $amount = $request->get("amount"); //amountを取得
-    $amount = 3; //仮で
+    $amount = $request->get("amount"); //amountを取得
+//    $amount = 3; //仮で
     $cart = new Cart();
     $cart->addItem($id, $amount); //選択した商品のデータ全部をまるごと渡す
     return redirect("/cart"); //カートのページへリダイレクト
@@ -45,7 +45,7 @@ Route::post('/cart', function(Request $request){
 // カートの中を一覧表示
 Route::get('/cart', function(){
     $cart = new Cart;
-    $items = $cart->getList();
+    $items = $cart->getlist();
     return view("cart", [ //データを渡してビューを表示
         "items" => $items
     ]);
