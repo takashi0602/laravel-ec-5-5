@@ -50,6 +50,7 @@
             <li><a href="/detail?id=3">ONIONS</a></li>
             <li><a href="/detail?id=4">CURRY POWDER</a></li>
             <li><a href="/detail?id=5">MEET</a></li>
+            <li><a href="/cart">SHOPPING CART</a></li>
         </ul>
     </nav>
 
@@ -62,37 +63,38 @@
             <span class="image main"><img src="{{  $vegetable->img }}" alt="" style="height: 40%;width: 40%; display: block; margin-left: auto; margin-right: auto"/></span>
             <p>{{ $vegetable->description }}</p>
 
-            <div class="table-wrapper">
-                <table class="alt">
-                    <thead>
-                    <tr>
-                        <th>規格・サイズ</th>
-                        <th>商品内容</th>
-                        <th>価格（税込）</th>
-                        <th>個数</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>{{$vegetable->size}}</td>
-                        <td>{{$vegetable->contents}}</td>
-                        <td>¥ {{$vegetable->price}}</td>
-                        <td>
-                            <select name="amount" id="">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <form action="/cart?id={{$vegetable->id}}" method="post">
+            <form action="/cart?id={{ $vegetable->id }}" method="post">
                 {{ csrf_field() }}
+
+                <div class="table-wrapper">
+                    <table class="alt">
+                        <thead>
+                        <tr>
+                            <th>規格・サイズ</th>
+                            <th>商品内容</th>
+                            <th>価格（税込）</th>
+                            <th>個数</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>{{ $vegetable->size }}</td>
+                            <td>{{ $vegetable->contents }}</td>
+                            <td>¥ {{ $vegetable->price }}</td>
+                            <td>
+                                <select name="amount" id="">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
                 <ul class="actions fit">
                     <li><a href="/" class="button fit">一覧に戻る</a></li>
                     <li><input type="submit" class="button special fit" value="カートに入れる"></li>
@@ -106,7 +108,7 @@
         <div class="inner">
             <section>
                 <h2>Get in touch</h2>
-                <form method="post" action="#">
+                <form action="#">
                     <div class="field half first">
                         <input type="text" name="name" id="name" placeholder="Name" />
                     </div>

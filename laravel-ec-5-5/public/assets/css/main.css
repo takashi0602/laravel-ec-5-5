@@ -2388,6 +2388,7 @@ input[type="radio"] + label:before {
 .table-wrapper {
     -webkit-overflow-scrolling: touch;
     overflow-x: auto;
+    margin-bottom: 30px;
 }
 
 table {

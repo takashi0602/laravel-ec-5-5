@@ -50,6 +50,7 @@
             <li><a href="/detail?id=3">ONIONS</a></li>
             <li><a href="/detail?id=4">CURRY POWDER</a></li>
             <li><a href="/detail?id=5">MEET</a></li>
+            <li><a href="/cart">SHOPPING CART</a></li>
         </ul>
     </nav>
 
@@ -78,7 +79,7 @@
                                 <td>{{ $item->kana }}</td>
                                 <td>{{ $item->size }}</td>
                                 <td>{{ $item->amount }}</td>
-                                <td>¥ {{ $item->price }}</td>
+                                <td>¥ {{ $item->new_price }}</td>
                                 <td style="text-align: center;"><a href="/delete?index={{ $index }}">削除</a></td>
                             </tr>
                         @endforeach
@@ -104,7 +105,7 @@
         <div class="inner">
             <section>
                 <h2>Get in touch</h2>
-                <form method="post" action="#">
+                <form action="#">
                     <div class="field half first">
                         <input type="text" name="name" id="name" placeholder="Name" />
                     </div>
